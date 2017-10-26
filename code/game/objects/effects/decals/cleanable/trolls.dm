@@ -130,18 +130,6 @@
 /obj/effect/decal/cleanable/blood/drip/troll_f
 	desc = "It's fuschia."
 
-//BLOODY FOOTPRINTS
-/obj/effect/decal/cleanable/blood/footprints
-	name = "footprints"
-	icon = 'icons/effects/footprints.dmi'
-	icon_state = "nothingwhatsoever"
-	desc = "WHOSE FOOTPRINTS ARE THESE?"
-	random_icon_states = null
-	var/entered_dirs = 0
-	var/exited_dirs = 0
-	blood_state = BLOOD_STATE_HUMAN //the icon state to load images from
-	var/list/shoe_types = list()
-
 /obj/effect/decal/cleanable/blood/footprints/troll_r
 	icon = 'icons/effects/footprintsr.dmi'
 	blood_state=BLOOD_STATE_TROLL_BURGUNDY
