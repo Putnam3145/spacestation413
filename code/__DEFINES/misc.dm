@@ -205,6 +205,18 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 #define BLOOD_STATE_HUMAN			"blood"
 #define BLOOD_STATE_XENO			"xeno"
 #define BLOOD_STATE_OIL				"oil"
+#define BLOOD_STATE_TROLL_BURGUNDY  "burgundy blood"
+#define BLOOD_STATE_TROLL_BROWN     "brown blood" //technically "umber"
+#define BLOOD_STATE_TROLL_YELLOW    "yellow blood" //technically "ochre", for some reason
+#define BLOOD_STATE_TROLL_LIME      "lime blood" //technically "yellowgreen"
+#define BLOOD_STATE_TROLL_OLIVE     "olive blood"
+#define BLOOD_STATE_TROLL_JADE      "jade blood"
+#define BLOOD_STATE_TROLL_TEAL      "teal blood"
+#define BLOOD_STATE_TROLL_CERULEAN  "cerulean blood"
+#define BLOOD_STATE_TROLL_INDIGO    "indigo blood"
+#define BLOOD_STATE_TROLL_PURPLE    "purple blood"
+#define BLOOD_STATE_TROLL_VIOLET    "violet blood"
+#define BLOOD_STATE_TROLL_FUSCHIA   "fuschia blood"
 #define BLOOD_STATE_NOT_BLOODY		"no blood whatsoever"
 
 //suit sensors: sensor_mode defines
