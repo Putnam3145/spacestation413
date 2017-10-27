@@ -545,13 +545,14 @@
 				for(var/obj/effect/decal/cleanable/trail_holder/TH in start)
 					if((!(newdir in TH.existing_dirs) || trail_type == "trails_1" || trail_type == "trails_2") && TH.existing_dirs.len <= 16) //maximum amount of overlays is 16 (all light & heavy directions filled)
 						TH.existing_dirs += newdir
-						TH.add_overlay(image('icons/effects/blood'+blood_color+'.dmi', trail_type, dir = newdir))
+						var/blood_file=addtext("icons/effects/blood",blood_color,".dmi")
+						TH.add_overlay(image(blood_file, trail_type, dir = newdir))
 						TH.transfer_mob_blood_dna(src)
 
 /mob/living/carbon/human/makeTrail(turf/T)
 	if((NOBLOOD in dna.species.species_traits) || !bleed_rate || bleedsuppress)
 		return
-	var/this_blood_color=''
+	var/this_blood_color=""
 	if(dna.species.has_castes)
 		if("burgundy")
 			this_blood_color = "r"

@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/facial_hair_color = "000"		//Facial hair color
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
-	var/troll_caste = ''        //troll caste
+	var/troll_caste = ""        //troll caste
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	var/list/features = list("mcolor" = "FFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
 
@@ -842,7 +842,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					skin_tone = random_skin_tone()
 				if("bag")
 					backbag = pick(GLOB.backbaglist)
-				if('t_caste')
+				if("t_caste")
 					troll_caste = random_troll_caste()
 					eye_color = get_color_from_caste(troll_caste)
 				if("all")
@@ -1301,7 +1301,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.troll_caste = troll_caste
 	character.eye_color = eye_color
 	var/obj/item/organ/eyes/organ_eyes = character.getorgan(/obj/item/organ/eyes)
-	if (pref_species.has_caste)
+	if (pref_species.has_castes)
 		character.eye_color=get_color_from_caste(troll_caste)
 	if(organ_eyes)
 		if(!initial(organ_eyes.eye_color))

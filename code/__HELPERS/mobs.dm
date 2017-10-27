@@ -169,6 +169,9 @@ GLOBAL_LIST_INIT(skin_tones, list(
 		if("fuschia")
 			return "99004d"
 
+/proc/get_blood_graphic(list/blood_dna)
+	return addtext("icons/effects/blood",blood_dna["color"],".dmi")
+
 GLOBAL_LIST_INIT(troll_castes, list(
 	"burgundy",
 	"brown",

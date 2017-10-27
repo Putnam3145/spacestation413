@@ -359,36 +359,36 @@ mob/living/carbon/human/get_blood_dna_list()
 	var/list/blood_dna = list()
 	if(dna)
 		blood_dna[dna.unique_enzymes] = dna.blood_type
-		blood_dna.color=''
+		blood_dna["color"]=""
 		if(dna.species.has_castes)
 			switch(dna.species.troll_caste)
 				if("burgundy")
-					blood_dna.color = "r"
+					blood_dna["color"] = "r"
 				if("brown")
-					blood_dna.color = "b"
+					blood_dna["color"] = "b"
 				if("yellow")
-					blood_dna.color = "y"
+					blood_dna["color"] = "y"
 				if("lime")
-					blood_dna.color = "l"
+					blood_dna["color"] = "l"
 				if("olive")
-					blood_dna.color = "o"
+					blood_dna["color"] = "o"
 				if("jade")
-					blood_dna.color = "j"
+					blood_dna["color"] = "j"
 				if("teal")
-					blood_dna.color = "t"
+					blood_dna["color"] = "t"
 				if("cerulean")
-					blood_dna.color = "c"
+					blood_dna["color"] = "c"
 				if("indigo")
-					blood_dna.color = "i"
+					blood_dna["color"] = "i"
 				if("purple")
-					blood_dna.color = "p"
+					blood_dna["color"] = "p"
 				if("violet")
-					blood_dna.color = "v"
+					blood_dna["color"] = "v"
 				if("fuschia")
-					blood_dna.color = "f"
+					blood_dna["color"] = "f"
 	else
 		blood_dna["UNKNOWN DNA"] = "X*"
-		blood_dna.color=''
+		blood_dna["color"]=""
 
 	return blood_dna
 
@@ -449,7 +449,7 @@ mob/living/carbon/human/get_blood_dna_list()
 		if(!blood_splatter_icon)
 			blood_splatter_icon = icon(initial(icon), initial(icon_state), , 1)		//we only want to apply blood-splatters to the initial icon_state for each object
 			blood_splatter_icon.Blend("#fff", ICON_ADD) 			//fills the icon_state with white (except where it's transparent)
-			blood_splatter_icon.Blend(icon('icons/effects/blood'+blood_dna.color'.dmi', "itemblood"), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
+			blood_splatter_icon.Blend(icon(get_blood_graphic(blood_dna), "itemblood"), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
 			blood_splatter_icon = fcopy_rsc(blood_splatter_icon)
 			GLOB.blood_splatter_icons[index] = blood_splatter_icon
 		add_overlay(blood_splatter_icon)
@@ -461,7 +461,36 @@ mob/living/carbon/human/get_blood_dna_list()
 /turf/add_blood(list/blood_dna, list/datum/disease/diseases)
 	var/obj/effect/decal/cleanable/blood/splatter/B = locate() in src
 	if(!B)
-		B = new /obj/effect/decal/cleanable/blood/splatter(src, diseases)
+		if(blood_dna)
+			switch(blood_dna["color"])
+				if("r")
+					B = new /obj/effect/decal/cleanable/blood/troll_r/splatter(src, diseases)
+				if("b")
+					B = new /obj/effect/decal/cleanable/blood/troll_b/splatter(src, diseases)
+				if("y")
+					B = new /obj/effect/decal/cleanable/blood/troll_y/splatter(src, diseases)
+				if("l")
+					B = new /obj/effect/decal/cleanable/blood/troll_l/splatter(src, diseases)
+				if("o")
+					B = new /obj/effect/decal/cleanable/blood/troll_o/splatter(src, diseases)
+				if("j")
+					B = new /obj/effect/decal/cleanable/blood/troll_j/splatter(src, diseases)
+				if("t")
+					B = new /obj/effect/decal/cleanable/blood/troll_t/splatter(src, diseases)
+				if("c")
+					B = new /obj/effect/decal/cleanable/blood/troll_c/splatter(src, diseases)
+				if("i")
+					B = new /obj/effect/decal/cleanable/blood/troll_i/splatter(src, diseases)
+				if("p")
+					B = new /obj/effect/decal/cleanable/blood/troll_p/splatter(src, diseases)
+				if("v")
+					B = new /obj/effect/decal/cleanable/blood/troll_v/splatter(src, diseases)
+				if("f")
+					B = new /obj/effect/decal/cleanable/blood/troll_f/splatter(src, diseases)
+				else
+					B = new /obj/effect/decal/cleanable/blood/splatter(src, diseases)
+		else
+			B = new /obj/effect/decal/cleanable/blood/splatter(src, diseases)
 	B.transfer_blood_dna(blood_dna) //give blood info to the blood decal.
 	return 1 //we bloodied the floor
 
