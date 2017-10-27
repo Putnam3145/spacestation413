@@ -6,6 +6,7 @@
 	mutant_bodyparts = list("tail_human", "wings")
 	default_features = list("mcolor" = "CCC", "tail_human" = "None", "wings" = "None", )
 	use_skintones = 0
+	has_castes = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = GROSS | DAIRY
 	liked_food = JUNKFOOD | MEAT

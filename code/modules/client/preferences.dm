@@ -66,6 +66,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/facial_hair_color = "000"		//Facial hair color
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
+	var/troll_caste = ''        //troll caste
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	var/list/features = list("mcolor" = "FFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
 
@@ -256,6 +257,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<h3>Eye Color</h3>"
 
 				dat += "<span style='border: 1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eyes;task=input'>Change</a><BR>"
+
+				dat += "</td>"
+
+			if(TROLLCASTE in pref_species.species_traits)
+
+				dat += "<td valign='top' width='21%'>"
+
+				dat += "<h3>Skin Tone</h3>"
+
+				dat += "<a href='?_src_=prefs;preference=t_caste;task=input'>[troll_caste]</a><BR>"
 
 				dat += "</td>"
 
@@ -831,6 +842,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					skin_tone = random_skin_tone()
 				if("bag")
 					backbag = pick(GLOB.backbaglist)
+				if('t_caste')
+					troll_caste = random_troll_caste()
+					eye_color = get_color_from_caste(troll_caste)
 				if("all")
 					random_character()
 
@@ -1053,6 +1067,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones
 					if(new_s_tone)
 						skin_tone = new_s_tone
+
+				if("t_caste")
+					var/new_t_caste = input(user, "Choose your character's blood color:", "Character Preference") as null|anything in GLOB.troll_castes
+					if(new_t_caste)
+						troll_caste=new_t_caste
 
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference") as color|null
@@ -1279,8 +1298,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.gender = gender
 	character.age = age
 
+	character.troll_caste = troll_caste
 	character.eye_color = eye_color
 	var/obj/item/organ/eyes/organ_eyes = character.getorgan(/obj/item/organ/eyes)
+	if (pref_species.has_caste)
+		character.eye_color=get_color_from_caste(troll_caste)
 	if(organ_eyes)
 		if(!initial(organ_eyes.eye_color))
 			organ_eyes.eye_color = eye_color
