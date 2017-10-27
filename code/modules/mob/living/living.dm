@@ -517,7 +517,7 @@
 			if(MOVE_INTENT_WALK)
 				. += config_walk_delay
 
-/mob/living/proc/makeTrail(turf/target_turf, turf/start, direction)
+/mob/living/proc/makeTrail(turf/target_turf, turf/start, direction,blood_color)
 	if(!has_gravity())
 		return
 	var/blood_exists = FALSE
@@ -545,13 +545,39 @@
 				for(var/obj/effect/decal/cleanable/trail_holder/TH in start)
 					if((!(newdir in TH.existing_dirs) || trail_type == "trails_1" || trail_type == "trails_2") && TH.existing_dirs.len <= 16) //maximum amount of overlays is 16 (all light & heavy directions filled)
 						TH.existing_dirs += newdir
-						TH.add_overlay(image('icons/effects/blood.dmi', trail_type, dir = newdir))
+						TH.add_overlay(image('icons/effects/blood'+blood_color+'.dmi', trail_type, dir = newdir))
 						TH.transfer_mob_blood_dna(src)
 
 /mob/living/carbon/human/makeTrail(turf/T)
 	if((NOBLOOD in dna.species.species_traits) || !bleed_rate || bleedsuppress)
 		return
-	..()
+	var/this_blood_color=''
+	if(dna.species.has_castes)
+		if("burgundy")
+			this_blood_color = "r"
+		if("brown")
+			this_blood_color = "b"
+		if("yellow")
+			this_blood_color = "y"
+		if("lime")
+			this_blood_color = "l"
+		if("olive")
+			this_blood_color = "o"
+		if("jade")
+			this_blood_color = "j"
+		if("teal")
+			this_blood_color = "t"
+		if("cerulean")
+			this_blood_color = "c"
+		if("indigo")
+			this_blood_color = "i"
+		if("purple")
+			this_blood_color = "p"
+		if("violet")
+			this_blood_color = "v"
+		if("fuschia")
+			this_blood_color = "f"
+	..(blood_color=this_blood_color)
 
 /mob/living/proc/getTrail()
 	if(getBruteLoss() < 300)
