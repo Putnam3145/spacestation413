@@ -118,8 +118,7 @@
 #define NOLIVER			27
 #define NOSTOMACH		28
 #define NO_DNA_COPY     29
-#define TROLLCASTE      30
-#define HORNS           31
+#define TROLLHORNS      30
 
 #define ORGAN_SLOT_BRAIN "brain"
 #define ORGAN_SLOT_APPENDIX "appendix"

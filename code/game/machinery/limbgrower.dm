@@ -29,6 +29,7 @@
 							"human",
 							"lizard",
 							"plasmaman",
+							"troll",
 							"special"
 							)
 

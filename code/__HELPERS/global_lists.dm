@@ -30,7 +30,7 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/legs, GLOB.legs_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.r_wings_list,roundstart = TRUE)
 
-
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/troll_horns, GLOB.troll_horns_list)
 	//Species
 	for(var/spath in subtypesof(/datum/species))
 		var/datum/species/S = new spath()

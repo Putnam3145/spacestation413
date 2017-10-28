@@ -275,6 +275,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["facial_hair_color"]	>> facial_hair_color
 	S["eye_color"]			>> eye_color
 	S["skin_tone"]			>> skin_tone
+	S["troll_caste"]        >> troll_caste
 	S["hair_style_name"]	>> hair_style
 	S["facial_style_name"]	>> facial_hair_style
 	S["underwear"]			>> underwear
@@ -346,6 +347,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	facial_hair_color			= sanitize_hexcolor(facial_hair_color, 3, 0)
 	eye_color		= sanitize_hexcolor(eye_color, 3, 0)
 	skin_tone		= sanitize_inlist(skin_tone, GLOB.skin_tones)
+	troll_caste     = sanitize_inlist(troll_caste, GLOB.troll_castes)
+	troll_horn     = sanitize_inlist(troll_horn, GLOB.troll_horns_list)
 	backbag			= sanitize_inlist(backbag, GLOB.backbaglist, initial(backbag))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
 	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 3, 0)

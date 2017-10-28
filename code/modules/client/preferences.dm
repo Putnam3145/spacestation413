@@ -66,7 +66,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/facial_hair_color = "000"		//Facial hair color
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
-	var/troll_caste = ""        //troll caste
+	var/troll_caste = "burgundy"        //troll caste
+	var/troll_horn = "Nubby"           //troll horns
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	var/list/features = list("mcolor" = "FFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
 
@@ -229,6 +230,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += "</td>"
 
+			if(pref_species.has_castes)
+
+				dat += "<td valign='top' width='21%'>"
+
+				dat += "<h3>Blood Color</h3>"
+
+				dat += "<a href='?_src_=prefs;preference=t_caste;task=input'>[troll_caste]</a><BR>"
+
+				dat += "</td>"
+
 			if(HAIR in pref_species.species_traits)
 
 				dat += "<td valign='top' width='21%'>"
@@ -260,13 +271,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += "</td>"
 
-			if(TROLLCASTE in pref_species.species_traits)
+			if(TROLLHORNS in pref_species.species_traits)
 
 				dat += "<td valign='top' width='21%'>"
 
-				dat += "<h3>Skin Tone</h3>"
+				dat += "<h3>Horns/h3>"
 
-				dat += "<a href='?_src_=prefs;preference=t_caste;task=input'>[troll_caste]</a><BR>"
+				dat += "<a href='?_src_=prefs;preference=horn_type;task=input'>[troll_horn]</a><BR>"
+				dat += "<a href='?_src_=prefs;preference=previous_troll_horn;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_troll_horn;task=input'>&gt;</a><BR>"
 
 				dat += "</td>"
 
@@ -845,6 +857,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("t_caste")
 					troll_caste = random_troll_caste()
 					eye_color = get_color_from_caste(troll_caste)
+				if("horn_type")
+					troll_horn = random_troll_horns()
 				if("all")
 					random_character()
 
@@ -950,6 +964,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						facial_hair_style = previous_list_item(facial_hair_style, GLOB.facial_hair_styles_male_list)
 					else
 						facial_hair_style = previous_list_item(facial_hair_style, GLOB.facial_hair_styles_female_list)
+
+				if("horn_type")
+					var/new_troll_horns
+					new_troll_horns = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in GLOB.troll_horns_list
+					if(new_troll_horns)
+						troll_horn = new_troll_horns
+
+				if("next_troll_horn")
+					troll_horn = next_list_item(troll_horn, GLOB.troll_horns_list)
+
+				if("previous_troll_horn")
+					troll_horn = previous_list_item(troll_horn, GLOB.troll_horns_list)
 
 				if("underwear")
 					var/new_underwear
@@ -1071,7 +1097,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("t_caste")
 					var/new_t_caste = input(user, "Choose your character's blood color:", "Character Preference") as null|anything in GLOB.troll_castes
 					if(new_t_caste)
-						troll_caste=new_t_caste
+						troll_caste = new_t_caste
 
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference") as color|null

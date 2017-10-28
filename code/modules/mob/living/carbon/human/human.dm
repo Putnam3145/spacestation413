@@ -1021,6 +1021,9 @@
 /mob/living/carbon/human/species/synth/military
 	race = /datum/species/synth/military
 
+/mob/living/carbon/human/species/troll
+	race = /datum/species/troll
+
 /mob/living/carbon/human/species/zombie
 	race = /datum/species/zombie
 

@@ -1385,6 +1385,33 @@
 	name = "Aquatic"
 	icon_state = "aqua"
 
+/datum/sprite_accessory/troll_horns
+	gender = NEUTER
+
+/datum/sprite_accessory/troll_horns/karkat
+	name = "Nubby"
+	icon_state = "nubby"
+
+/datum/sprite_accessory/troll_horns/tavros
+	name = "Bull"
+	icon_state = "bull"
+
+/datum/sprite_accessory/troll_horns/gamzee
+	name = "Capricorn"
+	icon_state = "capricious"
+
+/datum/sprite_accessory/troll_horns/aradia
+	name = "Ram"
+	icon_state = "ram"
+
+/datum/sprite_accessory/troll_horns/feferi
+	name = "Royal"
+	icon_state = "royal"
+
+/datum/sprite_accessory/troll_horns/mierfa
+	name = "Swept"
+	icon_state = "fantroll_1"
+
 /datum/sprite_accessory/legs 	//legs are a special case, they aren't actually sprite_accessories but are updated with them.
 	icon = null					//These datums exist for selecting legs on preference, and little else
 

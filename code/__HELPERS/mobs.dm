@@ -116,7 +116,7 @@
 
 /proc/random_unique_troll_name(attempts_to_find_unique_name=10)
 	for(var/i=1, i<=attempts_to_find_unique_name, i++)
-		. = capitalize(troll_name())
+		. = troll_name()
 
 		if(i != attempts_to_find_unique_name && !findname(.))
 			break
@@ -141,6 +141,9 @@ GLOBAL_LIST_INIT(skin_tones, list(
 
 /proc/random_troll_caste()
 	return pick(GLOB.troll_castes)
+
+/proc/random_troll_horns()
+	return pick(GLOB.troll_horns_list)
 
 /proc/get_color_from_caste(troll_caste)
 	switch(troll_caste)
