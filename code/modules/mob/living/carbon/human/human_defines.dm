@@ -14,6 +14,8 @@
 	var/eye_color = "000"
 
 	var/troll_caste = "burgundy"
+
+	var/troll_horn = "Nubby"
 	
 	var/skin_tone = "caucasian1"	//Skin tone
 

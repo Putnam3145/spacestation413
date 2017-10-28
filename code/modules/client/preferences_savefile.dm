@@ -276,6 +276,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["eye_color"]			>> eye_color
 	S["skin_tone"]			>> skin_tone
 	S["troll_caste"]        >> troll_caste
+	S["troll_horn"]         >> troll_horn
 	S["hair_style_name"]	>> hair_style
 	S["facial_style_name"]	>> facial_hair_style
 	S["underwear"]			>> underwear

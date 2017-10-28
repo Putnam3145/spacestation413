@@ -1339,6 +1339,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.skin_tone = skin_tone
 	character.hair_style = hair_style
 	character.facial_hair_style = facial_hair_style
+	character.troll_horn = troll_horn
 	character.underwear = underwear
 	character.undershirt = undershirt
 	character.socks = socks
