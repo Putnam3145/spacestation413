@@ -1386,6 +1386,7 @@
 	icon_state = "aqua"
 
 /datum/sprite_accessory/troll_horns
+	icon = 'icons/mob/troll_horns.dmi'
 	gender = NEUTER
 
 /datum/sprite_accessory/troll_horns/karkat

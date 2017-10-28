@@ -46,12 +46,42 @@
 					else
 						//No oldFP or it's a different kind of blood
 						S.bloody_shoes[S.blood_state] = max(0, S.bloody_shoes[S.blood_state]-BLOOD_LOSS_PER_STEP)
-						var/obj/effect/decal/cleanable/blood/footprints/FP = new /obj/effect/decal/cleanable/blood/footprints(T)
+
+						var/obj/effect/decal/cleanable/blood/footprints/FP
+						if(S.blood_DNA && S.blood_DNA.len)
+							switch(S.blood_DNA["color"])
+								if("r")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_r(T)
+								if("b")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_b(T)
+								if("y")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_y(T)
+								if("l")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_l(T)
+								if("o")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_o(T)
+								if("j")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_j(T)
+								if("t")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_t(T)
+								if("c")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_c(T)
+								if("i")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_i(T)
+								if("p")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_p(T)
+								if("v")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_v(T)
+								if("f")
+									FP = new /obj/effect/decal/cleanable/blood/footprints/troll_f(T)
+								else
+									FP = new /obj/effect/decal/cleanable/blood/footprints(T)
+							FP.transfer_blood_dna(S.blood_DNA)
+						else
+							FP = new /obj/effect/decal/cleanable/blood/footprints(T)
 						FP.blood_state = S.blood_state
 						FP.entered_dirs |= dir
 						FP.bloodiness = S.bloody_shoes[S.blood_state]
-						if(S.blood_DNA && S.blood_DNA.len)
-							FP.transfer_blood_dna(S.blood_DNA)
 						FP.update_icon()
 						update_inv_shoes()
 				//End bloody footprints

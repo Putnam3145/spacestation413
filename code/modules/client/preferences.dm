@@ -275,7 +275,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += "<td valign='top' width='21%'>"
 
-				dat += "<h3>Horns/h3>"
+				dat += "<h3>Horns</h3>"
 
 				dat += "<a href='?_src_=prefs;preference=horn_type;task=input'>[troll_horn]</a><BR>"
 				dat += "<a href='?_src_=prefs;preference=previous_troll_horn;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_troll_horn;task=input'>&gt;</a><BR>"
